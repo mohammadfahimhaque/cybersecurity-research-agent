@@ -1,4 +1,13 @@
 <p align="center">
+  <a href="https://github.com/mohammadfahimhaque/cybersecurity-research-agent/actions/workflows/tests.yml">
+    <img src="https://github.com/mohammadfahimhaque/cybersecurity-research-agent/actions/workflows/tests.yml/badge.svg" alt="Tests" />
+  </a>
+  <a href="https://github.com/mohammadfahimhaque/cybersecurity-research-agent/actions/workflows/codeql.yml">
+    <img src="https://github.com/mohammadfahimhaque/cybersecurity-research-agent/actions/workflows/codeql.yml/badge.svg" alt="CodeQL Security Scan" />
+  </a>
+</p>
+
+<p align="center">
   <img src="assets/hero-banner.png" alt="Cybersecurity Research Agent" width="100%" />
 </p>
 
