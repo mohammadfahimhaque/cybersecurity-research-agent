@@ -68,7 +68,7 @@ def answer(result) -> str:
     text = str(result).strip()
 
     text = re.sub(
-        r"(?is)^\s*<(reasoning|analysis|thinking)>.*?</\1>\s*",
+        r"(?is)^(?:\s*<(reasoning|analysis|thinking)>.*?</\1>\s*)+",
         "",
         text,
     ).strip()

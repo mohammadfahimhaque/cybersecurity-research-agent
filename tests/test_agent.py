@@ -46,6 +46,29 @@ def test_answer_preserves_normal_output():
     assert agent.answer(result) == result
 
 
+def test_answer_removes_consecutive_leading_reasoning_blocks():
+    result = (
+        "  <reasoning>first private block</reasoning>\n\n"
+        "<ANALYSIS>second private block</ANALYSIS>\n"
+        "<thinking>third private block\nwith multiple lines</thinking>\n"
+        "Verified finding."
+    )
+
+    assert agent.answer(result) == "Verified finding."
+
+
+def test_answer_preserves_reasoning_tags_inside_report():
+    result = "Verified finding. Example source: <analysis>evidence</analysis>"
+
+    assert agent.answer(result) == result
+
+
+def test_answer_returns_empty_string_for_reasoning_only_output():
+    result = "<analysis>private</analysis>\n<thinking>also private</thinking>"
+
+    assert agent.answer(result) == ""
+
+
 @patch.dict(
     os.environ,
     {
