@@ -2,6 +2,7 @@ import os
 import re
 from pathlib import Path
 
+import httpx
 import httpx2
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
 from mcp.client.streamable_http import streamable_http_client
@@ -38,7 +39,7 @@ bronto = MCPClient(
             "BRONTO_MCP_URL",
             "https://mcp.eu.bronto.io/mcp",
         ),
-        http_client=httpx2.AsyncClient(
+        http_client=httpx.AsyncClient(
             headers={
                 "X-BRONTO-API-KEY": os.environ["BRONTO_API_KEY"]
             },
@@ -52,7 +53,7 @@ bronto = MCPClient(
 github = MCPClient(
     lambda: streamable_http_client(
         "https://api.githubcopilot.com/mcp/",
-        http_client=httpx2.AsyncClient(
+        http_client=httpx.AsyncClient(
             headers={
                 "Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
                 "X-MCP-Toolsets": "repos",

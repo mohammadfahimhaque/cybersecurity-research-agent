@@ -27,7 +27,7 @@
 
 ## Overview
 
-The **Cybersecurity Research Agent** is an AI-assisted investigation system designed to analyze security evidence while remaining explicit about what it can — and cannot — verify.
+The **Cybersecurity Research Agent** is an AI-assisted investigation system designed to analyze security evidence while remaining explicit about what it can â€” and cannot â€” verify.
 
 Its core principle is simple:
 
@@ -85,7 +85,7 @@ BEDROCK_MODEL_ID
 
 The agent follows an evidence-first investigation process.
 
-### 01 — Collect Context
+### 01 â€” Collect Context
 
 Establish:
 
@@ -95,7 +95,7 @@ Establish:
 - available evidence
 - available tools
 
-### 02 — Search Telemetry
+### 02 â€” Search Telemetry
 
 Use Bronto MCP to query available:
 
@@ -105,7 +105,7 @@ Use Bronto MCP to query available:
 - application logs
 - security-relevant signals
 
-### 03 — Correlate Evidence
+### 03 â€” Correlate Evidence
 
 Compare available indicators such as:
 
@@ -117,11 +117,11 @@ Compare available indicators such as:
 - processes
 - related identifiers
 
-### 04 — Inspect Source Code
+### 04 â€” Inspect Source Code
 
 When repository context is relevant, GitHub MCP can inspect committed source code in **read-only mode**.
 
-### 05 — Report Findings
+### 05 â€” Report Findings
 
 The final investigation is structured around:
 
@@ -139,11 +139,11 @@ The final investigation is structured around:
 The agent is explicitly instructed to separate facts from hypotheses.
 
 ```text
-Tool result        → Evidence
-Evidence pattern   → Observation
-Observation        → Supported interpretation
-Missing evidence   → Limitation
-Unsupported claim  → Not allowed
+Tool result        â†’ Evidence
+Evidence pattern   â†’ Observation
+Observation        â†’ Supported interpretation
+Missing evidence   â†’ Limitation
+Unsupported claim  â†’ Not allowed
 ```
 
 > **Tool results are evidence. Assumptions are not evidence.**
@@ -238,8 +238,8 @@ Security boundaries are part of the architecture rather than an afterthought.
 ### Secret Handling
 
 ```text
-.env           → real local configuration
-.env.example   → safe configuration template
+.env           â†’ real local configuration
+.env.example   â†’ safe configuration template
 ```
 
 Real API keys, access tokens, and credentials should never be committed.
@@ -252,11 +252,11 @@ Agent behavior is split across focused prompt modules rather than one large syst
 
 ```text
 prompts/
-├── capabilities.md
-├── my.md
-├── report.md
-├── role.md
-└── rules.md
+â”œâ”€â”€ capabilities.md
+â”œâ”€â”€ my.md
+â”œâ”€â”€ report.md
+â”œâ”€â”€ role.md
+â””â”€â”€ rules.md
 ```
 
 | File | Responsibility |
@@ -287,17 +287,17 @@ The agent was able to:
 
 ```text
 Collect telemetry
-       ↓
+       â†“
 Correlate timestamps + user + IP
-       ↓
-Identify failed → failed → success
-       ↓
+       â†“
+Identify failed â†’ failed â†’ success
+       â†“
 Separate evidence from hypotheses
-       ↓
+       â†“
 Identify missing context
-       ↓
+       â†“
 Assign confidence
-       ↓
+       â†“
 Publish investigation report
 ```
 
@@ -361,25 +361,25 @@ Claude Haiku 4.5 remains the current default model for this project.
 
 ```text
 .
-├── assets/
-│   ├── architecture-overview.png
-│   ├── hero-banner.png
-│   └── investigation-workflow.png
-│
-├── prompts/
-│   ├── capabilities.md
-│   ├── my.md
-│   ├── report.md
-│   ├── role.md
-│   └── rules.md
-│
-├── .dockerignore
-├── .env.example
-├── .gitignore
-├── Dockerfile
-├── README.md
-├── agent.py
-└── requirements.txt
+â”œâ”€â”€ assets/
+â”‚   â”œâ”€â”€ architecture-overview.png
+â”‚   â”œâ”€â”€ hero-banner.png
+â”‚   â””â”€â”€ investigation-workflow.png
+â”‚
+â”œâ”€â”€ prompts/
+â”‚   â”œâ”€â”€ capabilities.md
+â”‚   â”œâ”€â”€ my.md
+â”‚   â”œâ”€â”€ report.md
+â”‚   â”œâ”€â”€ role.md
+â”‚   â””â”€â”€ rules.md
+â”‚
+â”œâ”€â”€ .dockerignore
+â”œâ”€â”€ .env.example
+â”œâ”€â”€ .gitignore
+â”œâ”€â”€ Dockerfile
+â”œâ”€â”€ README.md
+â”œâ”€â”€ agent.py
+â””â”€â”€ requirements.txt
 ```
 
 ---
@@ -472,20 +472,20 @@ The endpoint currently returns the URL of the generated GitHub investigation iss
 
 | Capability | Status |
 |---|:---:|
-| Telemetry discovery | ✅ |
-| Telemetry search | ✅ |
-| Event correlation | ✅ |
-| Evidence-based investigation | ✅ |
-| Confidence reporting | ✅ |
-| GitHub source inspection | ✅ |
-| Read-only repository MCP | ✅ |
-| GitHub investigation reporting | ✅ |
-| Threat intelligence | — |
-| IP reputation | — |
-| IP geolocation | — |
-| EDR telemetry | — |
-| Packet inspection | — |
-| Vulnerability scanning | — |
+| Telemetry discovery | âœ… |
+| Telemetry search | âœ… |
+| Event correlation | âœ… |
+| Evidence-based investigation | âœ… |
+| Confidence reporting | âœ… |
+| GitHub source inspection | âœ… |
+| Read-only repository MCP | âœ… |
+| GitHub investigation reporting | âœ… |
+| Threat intelligence | â€” |
+| IP reputation | â€” |
+| IP geolocation | â€” |
+| EDR telemetry | â€” |
+| Packet inspection | â€” |
+| Vulnerability scanning | â€” |
 
 Unavailable capabilities are treated as explicit limitations rather than opportunities to invent results.
 
@@ -494,15 +494,15 @@ Unavailable capabilities are treated as explicit limitations rather than opportu
 ## Development Milestones
 
 ```text
-01  Bedrock model invocation             ✓
-02  Cybersecurity agent identity         ✓
-03  Bronto MCP telemetry                 ✓
-04  GitHub investigation reporting       ✓
-05  Investigation methodology            ✓
-06  Capability boundaries                ✓
-07  Model comparison                     ✓
-08  Read-only GitHub source access       ✓
-09  Portfolio redesign                   ✓
+01  Bedrock model invocation             âœ“
+02  Cybersecurity agent identity         âœ“
+03  Bronto MCP telemetry                 âœ“
+04  GitHub investigation reporting       âœ“
+05  Investigation methodology            âœ“
+06  Capability boundaries                âœ“
+07  Model comparison                     âœ“
+08  Read-only GitHub source access       âœ“
+09  Portfolio redesign                   âœ“
 ```
 
 ---
@@ -510,7 +510,7 @@ Unavailable capabilities are treated as explicit limitations rather than opportu
 ## Roadmap
 
 - [ ] Structured investigation schema
-- [ ] Unit tests
+- [x] Unit tests (offline mocks; no live model or telemetry proof)
 - [ ] Integration tests
 - [ ] Improved exception handling
 - [ ] Investigation severity classification
@@ -531,11 +531,11 @@ This project sits at the intersection of:
 
 ```text
 Cybersecurity
-      ×
+      Ã—
 AI Agent Engineering
-      ×
+      Ã—
 Cloud Infrastructure
-      ×
+      Ã—
 Product & UX Thinking
 ```
 
@@ -550,9 +550,9 @@ The goal is to build an investigation system that understands:
 ## Author
 
 **Mohammad Fahim Haque**
-MSc Computing (Cybersecurity) — Dublin City University
+MSc Computing (Cybersecurity) â€” Dublin City University
 
-Software development · Cybersecurity · AI systems · UI/UX design
+Software development Â· Cybersecurity Â· AI systems Â· UI/UX design
 
 [GitHub](https://github.com/mohammadfahimhaque)
 
@@ -561,3 +561,27 @@ Software development · Cybersecurity · AI systems · UI/UX design
 <p align="center">
   <strong>Evidence before conclusions.</strong>
 </p>
+
+## Offline verification
+
+Use Python 3.12 in an isolated environment. These tests use synthetic configuration
+and mocked GitHub requests; they do not invoke Bedrock, Bronto, or publish issues.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+# Windows PowerShell: .venv\Scripts\Activate.ps1
+python -m pip install -r requirements-dev.txt
+python -m pytest -v
+```
+
+Direct runtime and test dependencies are pinned to inspected versions; transitive
+packages are resolved by pip. Live integrations require separate credentials and
+verification. The example investigation and model comparison above are development
+observations, not a repeatable benchmark or a guarantee of model behavior.
+
+**Publication boundary:** a valid invocation currently creates a GitHub issue
+automatically after model execution. There is no separate human approval step.
+Run only with a narrowly scoped token and a disposable reporting repository until
+you have reviewed this behavior. Model text and prompt instructions do not enforce
+an authorization boundary against prompt injection.
